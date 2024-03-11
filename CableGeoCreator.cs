@@ -60,22 +60,16 @@ private Vector3[] GetBezierPoints(CableCreator cableCreator, CableCreator.CableP
     {
         float t = i / (float)(resolution - 1);
 
-        // Используем позицию cableCreator в качестве фиксированной стартовой точки
         Vector3 startPoint = cableCreator.transform.position;
 
-        // Вычисляем конечную точку для стартового сегмента
         Vector3 endPoint = cablePoint.point.transform.TransformPoint(cablePoint.endOffsets[offsetIndex]);
 
-        // Вычисляем интерполированную точку между startPoint и endPoint
         Vector3 interpolatedPoint = Vector3.Lerp(startPoint, endPoint, t);
 
-        // Вычисляем оффсет для данного момента времени
         Vector3 offset = Vector3.Lerp(cablePoint.startOffsets[offsetIndex], cablePoint.endOffsets[offsetIndex], t);
 
-        // Используем линейную интерполяцию между startPoint и interpolatedPoint
         Vector3 interpolatedStartPoint = Vector3.Lerp(startPoint, interpolatedPoint, t);
 
-        // Теперь используем interpolatedStartPoint и offset для расчета точки на кривой
         points[i] = CableCreator.CalculateBezierPoint(t, 
             interpolatedStartPoint, 
             Vector3.Lerp(interpolatedStartPoint, interpolatedStartPoint + offset, 0.5f),
