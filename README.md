@@ -14,7 +14,7 @@
 Attach Scripts:
 
 Add CableCreator to a GameObject to define the point.
-Use the AddNewCablePoint method in CableCreator or manually adjust the nextPoints list to extend the cable through your scene.
+Use the + in CableCreator, adjust the offset list to control the cable curveness.
 In CableCreator, modify the resolution to control the cable's curve smoothness.
 
 After you set the curves:
